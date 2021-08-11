@@ -210,6 +210,43 @@
     <v-main>
       <router-view />
     </v-main>
+    <v-footer dark padless>
+      <v-card flat tile class="teal darken-4 lighten-1 white--text text-center">
+        <v-card-text>
+          <v-btn
+            v-for="icon in icons"
+            :key="icon"
+            class="mx-4 white--text"
+            icon
+          >
+            <v-icon size="24px">
+              {{ icon }}
+            </v-icon>
+          </v-btn>
+        </v-card-text>
+
+        <v-card-text class="white--text pt-0">
+          Con motivo de la creación del Sistema Nacional Anticorrupción, el 18
+          de julio de 2016, se publicó en el Diario Oficial de la Federación, la
+          Ley General del Sistema Nacional Anticorrupción, en cuyo artículo 36
+          se establece que las leyes de las entidades federativas desarrollarán
+          la integración, atribuciones, y funcionamiento de los Sistemas
+          Locales. Lo anterior, motivó la reforma de la Constitución Política
+          del Estado de Yucatán, en cuyo artículo 101 bis, se establece la
+          creación del Sistema Estatal Anticorrupción de Yucatán, como la
+          instancia de coordinación entre las autoridades del orden estatal y
+          municipal competentes en la prevención, detección y sanción de
+          responsabilidades administrativas y hechos de corrupción, así como en
+          la fiscalización y control de recursos públicos.
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-text class="white--text">
+          {{ new Date().getFullYear() }} — <strong>SESEAY</strong>
+        </v-card-text>
+      </v-card>
+    </v-footer>
   </v-app>
 </template>
 
@@ -442,6 +479,7 @@ export default {
         to: { name: "legal" },
       },
     ],
+    icons: ["mdi-facebook", "mdi-youtube", "mdi-email", "mdi-phone"],
   }),
 };
 </script>

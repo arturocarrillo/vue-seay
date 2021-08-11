@@ -1,0 +1,18 @@
+[{
+        "id": 1,
+        "name": "C.P Lauro Ismael Canché Cháves",
+        "username": "Director de Administración y Finanzas",
+        "email": "lauro.canche@seay.org.mx",
+        "address": {
+            "street": "Av. Alemán N° 5",
+            "suite": " Col. Felipe Carrillo Puerto",
+            "city": "Mérida",
+            "zipcode": "C.P. 97208"
+
+        },
+        "phone": "(999)5.65.56.20",
+        "website": "seay.org.mx"
+
+    }
+
+]

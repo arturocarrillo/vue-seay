@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <v-card tile class="overflow-hidden" app temporary>
-      <v-toolbar flat color="teal darken-4" dark>
+    <v-card tile class="overflow-hidden">
+      <v-app-bar flat color="teal darken-4" app dark>
         <v-app-bar-nav-icon
           class="hidden-sm-and-up"
           @click.stop="drawer = !drawer"
@@ -174,7 +174,7 @@
             <span>Marco Jurídico</span>
           </v-tooltip>
         </v-toolbar-items>
-      </v-toolbar>
+      </v-app-bar>
     </v-card>
     <v-navigation-drawer v-model="drawer" app temporary>
       <v-list nav dense shaped v-model="selectItem">
@@ -213,6 +213,7 @@
 <script>
 export default {
   name: "nav",
+  components: {},
   data: () => ({
     drawer: false,
     selectItem: 1,

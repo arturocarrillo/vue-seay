@@ -114,7 +114,7 @@ const routes = [{
         path: '/Blog',
         name: 'blog',
         component: () =>
-            import ('@/views/storyindex.vue')
+            import ('@/views/ourwork/blog.vue')
     },
     {
         path: '/Revista',
