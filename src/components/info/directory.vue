@@ -3,12 +3,28 @@
     <v-card-title class="teal darken-4 white--text text-h5">
       Directorio Oficial - 2021
     </v-card-title>
+
     <v-row class="pa-4" justify="space-between">
       <v-col cols="5">
         <v-treeview
           :active.sync="active"
-          :items="items"
-          :load-children="fetchUsers"
+          :items="admon"
+          :load-children="fetchEmployeesAdmon"
+          :open.sync="open"
+          activatable
+          color="teal"
+          open-on-click
+          transition
+        >
+          <template v-slot:prepend="{ item }">
+            <v-icon v-if="!item.children"> mdi-account </v-icon>
+          </template>
+        </v-treeview>
+
+        <v-treeview
+          :active.sync="active"
+          :items="juri"
+          :load-children="fetchEmployeesJuridico"
           :open.sync="open"
           activatable
           color="warning"
@@ -26,7 +42,7 @@
       <v-col class="d-flex text-center">
         <v-scroll-y-transition mode="out-in">
           <div
-            v-if="!selected"
+            v-if="!selectedEmployee"
             class="text-h6 grey--text text--lighten-1 font-weight-light"
             style="align-self: center"
           >
@@ -34,26 +50,20 @@
           </div>
           <v-card
             v-else
-            :key="selected.id"
+            :key="selectedEmployee.id"
             class="pt-6 mx-auto"
             flat
             max-width="400"
           >
             <v-card-text>
-              <v-avatar v-if="avatar" size="88">
-                <v-img
-                  :src="`https://avataaars.io/${avatar}`"
-                  class="mb-6"
-                ></v-img>
-              </v-avatar>
               <h3 class="text-h5 mb-2">
-                {{ selected.name }}
+                {{ selectedEmployee.name }}
               </h3>
               <div class="blue--text mb-2">
-                {{ selected.email }}
+                {{ selectedEmployee.email }}
               </div>
               <div class="blue--text subheading font-weight-bold">
-                {{ selected.username }}
+                {{ selectedEmployee.username }}
               </div>
             </v-card-text>
             <v-divider></v-divider>
@@ -61,19 +71,23 @@
               <v-col class="text-right mr-4 mb-2" tag="strong" cols="5">
                 Company:
               </v-col>
-              <v-col>{{ selected.company.name }}</v-col>
+              <v-col>{{ selectedEmployee.company.name }}</v-col>
               <v-col class="text-right mr-4 mb-2" tag="strong" cols="5">
                 Website:
               </v-col>
               <v-col>
-                <a :href="`//${selected.website}`" target="_blank">{{
-                  selected.website
+                <a :href="`//${selectedEmployee.website}`" target="_blank">{{
+                  selectedEmployee.website
                 }}</a>
               </v-col>
               <v-col class="text-right mr-4 mb-2" tag="strong" cols="5">
                 Phone:
               </v-col>
-              <v-col>{{ selected.phone }}</v-col>
+              <v-col>{{ selectedEmployee.phone }}</v-col>
+              <v-col class="text-right mr-4 mb-2" tag="strong" cols="5">
+                Ext:
+              </v-col>
+              <v-col>{{ selectedEmployee.ext }}</v-col>
             </v-row>
           </v-card>
         </v-scroll-y-transition>
@@ -82,62 +96,62 @@
   </v-card>
 </template>
 <script>
-const avatars = [
-  "?accessoriesType=Blank&avatarStyle=Circle&clotheColor=PastelGreen&clotheType=ShirtScoopNeck&eyeType=Wink&eyebrowType=UnibrowNatural&facialHairColor=Black&facialHairType=MoustacheMagnum&hairColor=Platinum&mouthType=Concerned&skinColor=Tanned&topType=Turban",
-  "?accessoriesType=Sunglasses&avatarStyle=Circle&clotheColor=Gray02&clotheType=ShirtScoopNeck&eyeType=EyeRoll&eyebrowType=RaisedExcited&facialHairColor=Red&facialHairType=BeardMagestic&hairColor=Red&hatColor=White&mouthType=Twinkle&skinColor=DarkBrown&topType=LongHairBun",
-  "?accessoriesType=Prescription02&avatarStyle=Circle&clotheColor=Black&clotheType=ShirtVNeck&eyeType=Surprised&eyebrowType=Angry&facialHairColor=Blonde&facialHairType=Blank&hairColor=Blonde&hatColor=PastelOrange&mouthType=Smile&skinColor=Black&topType=LongHairNotTooLong",
-  "?accessoriesType=Round&avatarStyle=Circle&clotheColor=PastelOrange&clotheType=Overall&eyeType=Close&eyebrowType=AngryNatural&facialHairColor=Blonde&facialHairType=Blank&graphicType=Pizza&hairColor=Black&hatColor=PastelBlue&mouthType=Serious&skinColor=Light&topType=LongHairBigHair",
-  "?accessoriesType=Kurt&avatarStyle=Circle&clotheColor=Gray01&clotheType=BlazerShirt&eyeType=Surprised&eyebrowType=Default&facialHairColor=Red&facialHairType=Blank&graphicType=Selena&hairColor=Red&hatColor=Blue02&mouthType=Twinkle&skinColor=Pale&topType=LongHairCurly",
-];
-
 const pause = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export default {
   name: "directory",
   data: () => ({
     active: [],
-    avatar: null,
     open: [],
-    users: [],
+    employeesAdmon: [],
+    employeesJuridico: [],
   }),
 
   computed: {
-    items() {
+    admon() {
       return [
         {
-          name: "Users",
-          children: this.users,
+          name: "Administración y Finanzas",
+          children: this.employeesAdmon,
         },
       ];
     },
-    selected() {
+    juri() {
+      return [
+        {
+          name: "Jurídico",
+          children: this.employeesJuridico,
+        },
+      ];
+    },
+
+    selectedEmployee() {
       if (!this.active.length) return undefined;
 
       const id = this.active[0];
 
-      return this.users.find((user) => user.id === id);
+      return (
+        this.employeesAdmon.find((user) => user.id === id) ||
+        this.employeesJuridico.find((user) => user.id === id)
+      );
     },
   },
-
-  watch: {
-    selected: "randomAvatar",
-  },
-
   methods: {
-    async fetchUsers(item) {
-      // Remove in 6 months and say
-      // you've made optimizations! :)
+    async fetchEmployeesAdmon(item) {
       await pause(1500);
 
-      return fetch(
-        "https://raw.githubusercontent.com/typicode/demo/master/db.json"
-      )
+      return fetch("http://localhost:3000/employeesAdmon")
         .then((res) => res.json())
         .then((json) => item.children.push(...json))
         .catch((err) => console.warn(err));
     },
-    randomAvatar() {
-      this.avatar = avatars[Math.floor(Math.random() * avatars.length)];
+    async fetchEmployeesJuridico(item) {
+      await pause(1500);
+
+      return fetch("http://localhost:3000/employeesJuridico")
+        .then((res) => res.json())
+        .then((json) => item.children.push(...json))
+        .catch((err) => console.warn(err));
     },
   },
 };

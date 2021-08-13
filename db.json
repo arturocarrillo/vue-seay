@@ -1,0 +1,165 @@
+{
+    "employees": [{
+            "id": 1,
+            "departmentID": 1,
+            "department": "Dirección Administración y Finanzas",
+            "name": "Lauro Canche",
+            "username": "Director de Administración y Finanzas",
+            "email": "lauro.canche@seay.org.mx",
+            "address": {
+                "street": "Av Aleman ",
+                "suite": "Nº 51",
+                "city": "5 y 5A Felipe Carrillo Puerto",
+                "zipcode": "97208"
+            },
+            "phone": "9995 65 56 20",
+            "ext": "201",
+            "website": "www.seay.org.mx",
+            "company": {
+                "name": "SESEAY"
+            }
+        },
+        {
+            "id": 2,
+            "departmentID": 1,
+            "department": "Dirección Administración y Finanzas",
+            "name": "Juan Segovia",
+            "username": "Jefe del Departamento de Recursos Humanos, Materiales y Servicios",
+            "email": "Juan.Segovia@seay.org.mx",
+            "address": {
+                "street": "Av Aleman ",
+                "suite": "Nº 51",
+                "city": "5 y 5A Felipe Carrillo Puerto",
+                "zipcode": "97208"
+            },
+            "phone": "9995 65 56 20",
+            "ext": "204",
+            "website": "www.seay.org.mx",
+            "company": {
+                "name": "SESEAY"
+            }
+        },
+        {
+            "id": 3,
+            "departmentID": 2,
+            "department": "Dirección Jurídica",
+            "name": "Cesar Martínez",
+            "username": "Encargado de la Dirección Jurídica",
+            "email": "cesar.martinez@seay.org.mx",
+            "address": {
+                "street": "Av Aleman ",
+                "suite": "Nº 51",
+                "city": "5 y 5A Felipe Carrillo Puerto",
+                "zipcode": "97208"
+            },
+            "phone": "9995 65 56 20",
+            "ext": "301",
+            "website": "www.seay.org.mx",
+            "company": {
+                "name": "SESEAY"
+            }
+        },
+        {
+            "id": 4,
+            "departmentID": 2,
+            "department": "Dirección Jurídica",
+            "name": "Patricia Prieto",
+            "username": "Jefe del Departamento de Asuntos Jurídicos",
+            "email": "patricia.prieto@seay.org.mx",
+            "address": {
+                "street": "Av Aleman ",
+                "suite": "Nº 51",
+                "city": "5 y 5A Felipe Carrillo Puerto",
+                "zipcode": "97208"
+            },
+            "phone": "9995 65 56 20",
+            "ext": "304",
+            "website": "www.seay.org.mx",
+            "company": {
+                "name": "SESEAY"
+            }
+        }
+    ],
+    "employeesAdmon": [{
+            "id": 1,
+            "departmentID": 1,
+            "department": "Dirección Administración y Finanzas",
+            "name": "Lauro Canche",
+            "username": "Director de Administración y Finanzas",
+            "email": "lauro.canche@seay.org.mx",
+            "address": {
+                "street": "Av Aleman ",
+                "suite": "Nº 51",
+                "city": "5 y 5A Felipe Carrillo Puerto",
+                "zipcode": "97208"
+            },
+            "phone": "9995 65 56 20",
+            "ext": "201",
+            "website": "www.seay.org.mx",
+            "company": {
+                "name": "SESEAY"
+            }
+        },
+        {
+            "id": 2,
+            "departmentID": 1,
+            "department": "Dirección Administración y Finanzas",
+            "name": "Juan Segovia",
+            "username": "Jefe del Departamento de Recursos Humanos, Materiales y Servicios",
+            "email": "Juan.Segovia@seay.org.mx",
+            "address": {
+                "street": "Av Aleman ",
+                "suite": "Nº 51",
+                "city": "5 y 5A Felipe Carrillo Puerto",
+                "zipcode": "97208"
+            },
+            "phone": "9995 65 56 20",
+            "ext": "204",
+            "website": "www.seay.org.mx",
+            "company": {
+                "name": "SESEAY"
+            }
+        }
+    ],
+    "employeesJuridico": [{
+            "id": 1,
+            "departmentID": 2,
+            "department": "Dirección Jurídica",
+            "name": "Cesar Martínez",
+            "username": "Encargado de la Dirección Jurídica",
+            "email": "cesar.martinez@seay.org.mx",
+            "address": {
+                "street": "Av Aleman ",
+                "suite": "Nº 51",
+                "city": "5 y 5A Felipe Carrillo Puerto",
+                "zipcode": "97208"
+            },
+            "phone": "9995 65 56 20",
+            "ext": "301",
+            "website": "www.seay.org.mx",
+            "company": {
+                "name": "SESEAY"
+            }
+        },
+        {
+            "id": 2,
+            "departmentID": 2,
+            "department": "Dirección Jurídica",
+            "name": "Patricia Prieto",
+            "username": "Jefe del Departamento de Asuntos Jurídicos",
+            "email": "patricia.prieto@seay.org.mx",
+            "address": {
+                "street": "Av Aleman ",
+                "suite": "Nº 51",
+                "city": "5 y 5A Felipe Carrillo Puerto",
+                "zipcode": "97208"
+            },
+            "phone": "9995 65 56 20",
+            "ext": "304",
+            "website": "www.seay.org.mx",
+            "company": {
+                "name": "SESEAY"
+            }
+        }
+    ]
+}
